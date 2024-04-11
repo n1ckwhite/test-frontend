@@ -1,22 +1,26 @@
 import {FC} from "react";
-import cn from "classnames";
-import s from "./Model.module.css"
-import {Input} from "../Input";
 import {useSelector} from "react-redux";
-import {modelSelector} from "../../service";
+import {addModelReduce, modelSelector, useAppDispatch} from "../../service";
+import {Button} from "../Button";
+import {ModelItem} from "./components/ModelItem";
 
 export const Model: FC = () => {
+    const dispatch = useAppDispatch()
     const model = useSelector(modelSelector)
-
     return (
-        <ul className={cn(s.ul)}>
-            {model.paramValues.map((param) => {
+        <ul>
+            {model.paramValues.map(({paramId, value}) => {
                 return (
-                    <li className={s.li} key={param.paramId}>
-                        <Input defaultValue={param.value}/>
+                    <li key={paramId}>
+                        <ModelItem
+                            value={value}
+                            paramId={paramId}/>
                     </li>
                 )
             })}
+            <Button
+                onClick={() => dispatch(addModelReduce())}
+                text="Добавить"/>
         </ul>
     )
 }

@@ -1,20 +1,27 @@
 import {FC} from "react";
-import s from "./Params.module.css"
 import {useSelector} from "react-redux";
-import {paramsSelector} from "../../service";
+import {addParamReduce, paramsSelector, useAppDispatch} from "../../service";
+import {Button} from "../Button";
+import {Param} from "./components/Param";
 
 export const Params: FC = () => {
     const params = useSelector(paramsSelector)
+    const dispatch = useAppDispatch()
 
     return (
-        <ul className={s.ul}>
+        <ul>
             {params.map((param) => {
                 return (
-                    <li className={s.li} key={param.id}>
-                        {param.name}
+                    <li key={param.id}>
+                        <Param
+                            name={param.name}
+                            id={param.id}/>
                     </li>
                 )
             })}
+            <Button
+                onClick={() => dispatch(addParamReduce())}
+                text="Добавить"/>
         </ul>
     )
 }

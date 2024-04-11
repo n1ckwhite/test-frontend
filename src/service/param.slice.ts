@@ -30,7 +30,7 @@ const initialState: IParamState = {
                 value: 'макси'
             }
         ],
-        colors: ['красный']
+        colors: ['пусто']
     }
 }
 
@@ -38,9 +38,24 @@ export const paramSlice = createSlice({
     name: 'param',
     initialState,
     reducers: {
-        addParam: (state,action) => {
-            paramReducers.addParam(state,action)
-        }
+        addParamReduce: (state) => {
+            paramReducers.addParam(state)
+        },
+        deleteParamReduce: (state, action) => {
+            paramReducers.deleteParam(state,action)
+        },
+        editeParamReduce: (state, action) => {
+            paramReducers.editParam(state,action)
+        },
+        deleteModelReduce: (state, action) => {
+            paramReducers.deleteModel(state,action)
+        },
+        editModelReduce: (state, action) => {
+            paramReducers.editeModel(state,action)
+        },
+        addModelReduce: (state) => {
+            paramReducers.addPModel(state)
+        },
     },
     selectors: {
         paramsSelector: (sliceState) => sliceState.params,
@@ -49,7 +64,13 @@ export const paramSlice = createSlice({
 })
 
 
-export const { addParam } = paramSlice.actions
+export const {
+    addParamReduce,
+    deleteParamReduce,
+    deleteModelReduce,
+    editeParamReduce,
+    editModelReduce,
+    addModelReduce} = paramSlice.actions
 
 
 export const {

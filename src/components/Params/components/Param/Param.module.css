@@ -1,0 +1,9 @@
+.param {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.name {
+    margin: 0;
+}
