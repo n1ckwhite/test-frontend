@@ -1,0 +1,11 @@
+.input {
+    font-family: inherit;
+    outline: none;
+    border: 1px solid #eee;
+}
+
+.li {
+    margin: 0;
+    list-style: none;
+}
+

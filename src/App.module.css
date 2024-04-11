@@ -1,0 +1,17 @@
+.app {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 0;
+    
+    
+}
+.ul {
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    margin: 0;
+    list-style: none;
+}
+
